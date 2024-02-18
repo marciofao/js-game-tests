@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by marciofao (http://jsbin.com/dorehi/11/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Descubra se Você é um cavalo!</title>
+	<style id="jsbin-css">
+		*{
+			text-align: center;
+			font-family: Arial;
+		}
+		#all, #chato, #thumb, #original{
+			display: none;
+		}
+		img{
+			height: 100%;
+
+		}
+		@media only screen and (max-width: 700px) {
+			img{
+				width: 100%;
+
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<img id="thumb" src="http://i.imgur.com/xJPN5Wkt.png" alt="imagem cavalo">
+	<div id="all" >
+		<h1>Parabéns, você não é um cavalo!</h1>
+		<img  src="http://i.imgur.com/3u3icUj.jpg" alt="horse head computer">
+
+	</div>
+
+	<div id="chato">
+		<h1>Seu chato!</h1>
+		<img src="http://i.imgur.com/gKXlfGK.jpg" alt="">
+		<p>
+			(nem era cavalo mesmo! ¬¬)
+		</p>
+	</div>
+
+	<div id="original">
+		<p>
+			Baseado neste 
+			<a href="http://i.imgur.com/teAS84u.jpg">fluxograma</a>
+		</p>
+
+	</div>
+	<script id="jsbin-javascript">
+/*
+*
+* Made by Márcio Lopes Fão - marciofao.tk
+*
+*/
+
+var count = 0;
+
+
+function start(){
+	if (confirm('Este teste verifica se você é um cavalo.\n(um teste muito útil)\n\n Deseja continuar?')) {
+		var pt=prompt('Você é um cavalo? sim-s, Não-n, talvez-t');	
+		if (pt=='' || pt==' ') {
+			start();
+		}
+		if (pt=='s' || pt=='t' || pt=='S' || pt=='T') {
+			quantaspata();
+
+		}
+		else{
+			console.log("nao eh cavalo, carai");
+			end();
+		}
+	} else {
+		console.log("Nem era cavalo mesmo...");
+		document.getElementById('chato').style.display = 'block';
+	}
+}
+
+function quantaspata(){
+	var patas = prompt('com quantas patas vc anda?');
+	switch(patas){
+		case '2':
+			end();
+		break;
+		case '4':
+			confirm('Sério?');
+		if (confirm('Você pode ler e escrever?')) {
+				end();
+			}else{
+				alert('Mentira, vocês está lendo isso!');
+				end();
+				return false;
+			}
+		break;
+		
+		default:
+			//not needed anymore but I keep just for fun.
+			count++;
+			if(count==5){
+        	  	//in case we stuck in a loop
+
+        	  	//this alert is just to adapt the loop exit fix into the joke
+        	  	alert("Ok, vamo parar com a palhaçada, já sei que vc não é um cavalo!")
+          		end();
+          		return false;
+      		}else{
+      			alert('Sem Zoeira, pfv!');
+      		}
+
+      quantaspata();
+      break;
+  }
+}
+
+function end(){
+	console.log("nao eh cavalo, carai");
+	document.getElementById('all').style.display = 'block';
+	document.getElementById('original').style.display = 'block';
+}
+
+start();
+
+
+
+</script>
+</body>
+</html>

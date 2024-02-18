@@ -1,0 +1,70 @@
+<!--
+***********************
+Autor: Márcio Lopes Fão
+http://marciofao.site
+
+special thanks to @ult_compo
+***********************
+-->
+<html>
+<head>
+	<title>321 Dog!</title>
+
+	<style type="text/css">
+		img[alt="Free Web Hosting"] {display: none;} /*avoid ads*/
+
+		h1{
+			text-align: center;
+			position: relative;
+			margin-top: 300px;
+			transform: translateY(-50%);
+		}
+		/* Style the video: 100% width and height to cover the entire window */
+		#video {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			min-width: 100%;
+			min-height: 100%;
+		}
+		video{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1 id='timer'>Prepare</h1>
+	<img src="Pug-Face-Close.jpg" alt="pug face" id="pug">
+	<script type="text/javascript">
+		document.getElementById('pug').style.display = 'none';
+		
+
+		function countdown(time, cb) {
+			document.getElementById('timer').innerHTML = time;
+			
+			if (!time) {
+				cb();
+				return;
+			}
+			
+			setTimeout(countdown, 1000, time - 1, cb);
+		}
+
+		countdown(+prompt('Digite um numero (0-10):') || 3, function() { //ask for time countdown or 3 sec default
+			//location = 'http://sanger.dk/'; //cant use it anymore
+			document.getElementById('timer').style.display = 'none'; //hide counter
+			document.getElementById('video').style.display = 'block';
+		});
+
+		
+
+	</script>
+
+	<!-- The video -->
+	<video autoplay muted loop id="video">
+		<source src="screenclean.mp4" type="video/mp4">
+		</video>
+	</video>
+
+</body>
+</html>

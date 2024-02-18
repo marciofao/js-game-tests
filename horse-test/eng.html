@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by marciofao (http://jsbin.com/dorehi/11/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Find out if you are a horse</title>
+	<style id="jsbin-css">
+		*{
+			text-align: center;
+			font-family: Arial;
+		}
+		#all, #chato, #thumb, #original{
+			display: none;
+		}
+		img{
+			height: 100%;
+
+		}
+		@media only screen and (max-width: 700px) {
+			img{
+				width: 100%;
+
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<img id="thumb" src="http://i.imgur.com/xJPN5Wkt.png" alt="imagem cavalo">
+	<div id="all" >
+		<h1>Congrats, You are not a horse!</h1>
+		<img  src="http://i.imgur.com/3u3icUj.jpg" alt="horse head computer">
+
+	</div>
+
+	<div id="chato">
+		<h1>You're Boring!</h1>
+		<img src="http://i.imgur.com/gKXlfGK.jpg" alt="">
+		<p>
+			(You're not a horse, anyway! ¬¬)
+		</p>
+	</div>
+
+	<div id="original">
+		<p>
+			Based in this 
+			<a href="http://i.imgur.com/teAS84u.jpg">fluxogram (portuguese)</a>
+		</p>
+
+	</div>
+	<script id="jsbin-javascript">
+/*
+*
+* Made by Márcio Lopes Fão - marciofao.tk
+*
+*/
+
+var count = 0;
+
+
+function start(){
+	if (confirm('Find out if you are a horse. \n (an useful test)\n\n Do you wish to continue?')) {
+		var pt=prompt('Are you a horse? Yes-Y, No-N, Maybe-M');	
+		if (pt=='' || pt==' ') {
+			start();
+		}
+		if (pt=='y' || pt=='m' || pt=='Y' || pt=='M') {
+			quantaspata();
+
+		}
+		else{
+			console.log("Not a horse, damn!");
+			end();
+		}
+	} else {
+		console.log("not a horse anyway...");
+		document.getElementById('chato').style.display = 'block';
+	}
+}
+
+function quantaspata(){
+	var patas = prompt('How many legs do you usually use to walk?');
+	switch(patas){
+		case '2':
+			end();
+		break;
+		case '4':
+			confirm('Really?');
+		if (confirm('Can you read and write?')) {
+				end();
+			}else{
+				alert('Liar, You are reading this!');
+				end();
+				return false;
+			}
+		break;
+		
+		default:
+			//not needed anymore but I keep just for fun.
+			count++;
+			if(count==5){
+        	  	//in case we stuck in a loop
+
+        	  	//this alert is just to adapt the loop exit fix into the joke
+        	  	alert("Ok, Stop the BS, I know you are not a horse!")
+          		end();
+          		return false;
+      		}else{
+      			alert('No BS, pls!');
+      		}
+
+      quantaspata();
+      break;
+  }
+}
+
+function end(){
+	console.log("not a horse, damn.");
+	document.getElementById('all').style.display = 'block';
+	document.getElementById('original').style.display = 'block';
+}
+
+start();
+
+
+
+</script>
+</body>
+</html>
